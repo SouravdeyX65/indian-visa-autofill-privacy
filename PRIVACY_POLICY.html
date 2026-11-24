@@ -9,18 +9,30 @@
       max-width: 850px;
       margin: 40px auto;
       padding: 0 18px;
-      font: 16px/1.65 system-ui, -apple-system, sans-serif;
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #202124;
+      background: #ffffff;
     }
     h1, h2 {
       line-height: 1.25;
       margin-top: 1.5em;
+      color: #111827;
     }
     h1 {
       margin-top: 0;
     }
+    ul {
+      padding-left: 1.4em;
+    }
+    li {
+      margin-bottom: 0.45em;
+    }
     a {
       color: #1558d6;
+    }
+    .meta {
+      color: #4b5563;
+      font-size: 0.95em;
     }
   </style>
 </head>
@@ -28,48 +40,67 @@
   <main>
     <header>
       <h1>Privacy Policy - Indian Visa Autofill (UNOFFICIAL)</h1>
-      <p><strong>Last updated:</strong> <time datetime="2026-11-17">17 November 2026</time></p>
-      <p>Indian Visa Autofill (UNOFFICIAL) is an independent browser extension. It is not affiliated with, authorised by, or endorsed by the Government of India or any visa authority.</p>
+      <p class="meta"><strong>Extension Version:</strong> 1.0.2 &nbsp;|&nbsp; <strong>Last updated:</strong> <time datetime="2026-11-24">24 November 2026</time></p>
+      <p>Indian Visa Autofill (UNOFFICIAL) is an independent browser extension. It is not affiliated with, authorised by, or endorsed by the Government of India, the Government of Bangladesh, or any visa, immigration, aviation, or port authority.</p>
     </header>
 
     <section>
       <h2>Information the extension handles</h2>
-      <p>The extension handles information that users choose to enter or import, which may include applicant and passport details, profile information, preferences, document files, PDF content, and screenshots. This information can be sensitive personal information.</p>
+      <p>The extension only handles information that users actively choose to enter, import, scan, or capture for form preparation, which may include:</p>
+      <ul>
+        <li>Applicant identity, family, address, travel, and passport details.</li>
+        <li>Saved profiles, hotel selections, and extension settings/preferences.</li>
+        <li>Imported documents, images, signatures, PDF content, and user-initiated page screenshots.</li>
+      </ul>
+      <p>This information constitutes sensitive personal information and is processed solely to assist the user in filling forms and preparing required documents.</p>
     </section>
 
     <section>
-      <h2>Local storage and processing</h2>
-      <p>Profiles and settings are stored in Chrome extension storage on the user's device. When enabled by the user, saved PDFs and screenshots are stored in the extension's local database (IndexedDB). PDF text extraction, document/photo processing, and the bundled OCR processing are performed in the browser on the user's device. The extension does not operate its own account system or profile-data server.</p>
+      <h2>Supported websites and form interaction</h2>
+      <p>When active on supported portals, the extension reads visible form fields and populates values selected by the user:</p>
+      <ul>
+        <li>Indian Visa Online (Bangladesh) (<code>indianvisa-bangladesh.nic.in</code>)</li>
+        <li>Indian e-Arrival Portal (<code>indianvisaonline.gov.in</code>)</li>
+        <li>Air Suvidha (<code>airsuvidha.civilaviation.gov.in</code>)</li>
+        <li>A-Challan Travel Tax Portal (<code>achallan.gov.bd</code> / <code>www.achallan.gov.bd</code>)</li>
+        <li>BLPA Land Port Passenger Tax Portal (<code>passenger.blpa.gov.bd</code>)</li>
+      </ul>
+      <p>Multi-step form session values (such as Air Suvidha step data) may be temporarily retained in local extension storage (for up to 6 hours) so details carry over between steps, and are cleared when a new profile is loaded.</p>
+    </section>
+
+    <section>
+      <h2>Local storage and on-device processing</h2>
+      <p>All profiles, preferences, and temporary form states are stored locally on the user's device using Chrome extension storage (<code>chrome.storage.local</code>). When enabled by the user, saved PDFs, processed photos/signatures, and screenshots are stored in the extension's local browser database (IndexedDB). PDF parsing, background removal/photo formatting, and bundled Tesseract OCR run locally in the user's browser. The extension does not operate any developer-owned backend server or user account system.</p>
     </section>
 
     <section>
       <h2>CAPTCHA recognition and third-party service</h2>
-      <p>The optional CAPTCHA helper first attempts recognition on the user's device using OCR components bundled with the extension. If its local result is not sufficiently reliable, the CAPTCHA image may be sent over HTTPS to OCR.space (api.ocr.space) for text recognition. Only the CAPTCHA image is sent for this fallback; the extension's profile, passport details, and other form fields are not intentionally included in that request. OCR.space is an independent third party and its handling of submitted images is governed by its own policies. Users who do not use the CAPTCHA helper do not trigger this transfer.</p>
+      <p>The optional CAPTCHA helper first attempts text recognition locally on the user's device using OCR components bundled with the extension. If the local result is not sufficiently confident or the user invokes fallback recognition, only the cropped CAPTCHA image is transmitted over HTTPS to OCR.space (<code>api.ocr.space</code>) for text extraction. Applicant profiles, passport details, and other form fields are never included in that request. OCR.space is an independent third party governed by its own privacy policy. Users who disable or do not use the CAPTCHA helper never trigger this external request.</p>
     </section>
 
     <section>
-      <h2>Sharing and sale</h2>
-      <p>The extension developer does not receive, sell, or share locally stored profile information. The only described third-party transfer is the optional CAPTCHA-image fallback to OCR.space. The extension does not include advertising or analytics trackers.</p>
+      <h2>Data sharing, sale, and tracking</h2>
+      <p>The developer does not collect, receive, sell, rent, or trade any user data. Aside from the optional CAPTCHA-image fallback to <code>api.ocr.space</code> described above, user data is never transmitted to external servers. The extension contains no advertisements, telemetry, or third-party analytics trackers.</p>
     </section>
 
     <section>
-      <h2>Backups, PDFs and screenshots</h2>
-      <p>Users may export a JSON backup. Exported backups are not encrypted by the extension and may contain sensitive information; keep them private. If the user enables the option to keep PDFs and screenshots, those files remain in local extension storage until deleted. Screenshots are captured only after the user invokes the screenshot feature. Users can open, download, or delete saved files from the extension's Files area.</p>
+      <h2>Backups, PDFs, and screenshots</h2>
+      <p>Users may export their profiles as a JSON backup file. Exported JSON backups are unencrypted and may contain sensitive personal details; users are responsible for keeping backup files secure. If the user enables saving PDFs or captures a full-page screenshot (via the extension controls or <code>Alt+Shift+S</code>), those files remain in local storage until deleted. Users can view, download, or delete saved items anytime in the extension's Files section.</p>
     </section>
 
     <section>
-      <h2>User controls and deletion</h2>
-      <p>Users can edit or delete profiles and saved files in the extension. The extension's delete-all control removes locally stored extension data. Uninstalling the extension or clearing Chrome data may also remove locally stored information. Exported backup files must be deleted separately by the user.</p>
+      <h2>User controls and data deletion</h2>
+      <p>Users have full control over their local data and can edit or delete individual profiles and saved files at any time. Using the extension's delete-all option permanently removes all locally stored extension data. Uninstalling the extension or clearing Chrome extension storage also removes local data. Any exported backup files saved to disk must be deleted manually by the user.</p>
     </section>
 
     <section>
       <h2>Accuracy and application submission</h2>
-      <p>The extension is an assistance tool. It does not submit visa applications, make payments, guarantee eligibility, or guarantee that extracted or populated information is accurate. Users must independently verify all information and submit applications themselves.</p>
+      <p>This extension is strictly a client-side form-filling and document preparation helper. It never submits visa or tax applications automatically, never processes payments, and does not guarantee visa eligibility or extraction accuracy. Users must carefully review all populated fields and complete submissions themselves.</p>
     </section>
 
     <footer>
       <h2>Contact</h2>
-      <p>For privacy questions, contact <a href="mailto:souravdey.sd018@outlook.com">souravdey.sd018@outlook.com</a>.</p>
+      <p>For privacy questions or support, contact <a href="mailto:souravdey.sd018@outlook.com">souravdey.sd018@outlook.com</a>.</p>
     </footer>
   </main>
 </body>
