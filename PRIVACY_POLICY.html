@@ -40,7 +40,7 @@
   <main>
     <header>
       <h1>Privacy Policy - Indian Visa Autofill (UNOFFICIAL)</h1>
-      <p class="meta"><strong>Extension Version:</strong> 1.0.3 &nbsp;|&nbsp; <strong>Last updated:</strong> <time datetime="2026-11-25">25 November 2026</time></p>
+      <p class="meta"><strong>Last updated:</strong> <time datetime="2026-11-26">26 November 2026</time></p>
       <p>Indian Visa Autofill (UNOFFICIAL) is an independent browser extension. It is not affiliated with, authorised by, or endorsed by the Government of India, the Government of Bangladesh, or any visa, immigration, aviation, or port authority.</p>
     </header>
 
@@ -75,24 +75,29 @@
 
     <section>
       <h2>CAPTCHA recognition and third-party services</h2>
-      <p>By default the optional CAPTCHA helper recognises text locally on the user's device using OCR components bundled with the extension. If the local result is not sufficiently confident or the user invokes fallback recognition, only the cropped CAPTCHA image is transmitted over HTTPS to OCR.space (<code>api.ocr.space</code>) for text extraction. OCR.space is an independent third party governed by its own privacy policy.</p>
-      <p><strong>Optional Google Gemini (off by default).</strong> A user may choose to enter their own Google Gemini API key in the extension. Only after the user enters a key, the extension sends the cropped CAPTCHA image (and the user's own API key, as required by Google's API) over HTTPS to Google's Gemini API to read the text, and this is tried before the local and OCR.space methods. Without a key, nothing is ever sent to Google. The key is stored only in local extension storage on the device, is not included in exported backups, and is removed when the user clears it or uses the delete-all option. Google processes the request under its own terms and privacy policy, and the user's own Gemini account or quota applies.</p>
+      <p>By default the optional CAPTCHA helper recognises text locally on the user's device using OCR components bundled with the extension. On the Indian Visa Online (Bangladesh) portal, if the local result is not sufficiently confident, only the cropped CAPTCHA image is transmitted over HTTPS to OCR.space (<code>api.ocr.space</code>) for text extraction. On the Indian e-Arrival portal, CAPTCHA recognition runs entirely on the user's device and does not use OCR.space. OCR.space is an independent third party governed by its own privacy policy.</p>
+      <p><strong>Optional Google Gemini (off by default).</strong> A user may choose to enter their own Google Gemini API key in the extension. Only after the user enters a key, the extension sends the cropped CAPTCHA image (and the user's own API key, as required by Google's API) over HTTPS to Google's Gemini API to read the text, and this is tried before the other recognition methods (on the Indian Visa Online (Bangladesh) portal, only the built-in quick on-device match runs first). Without a key, nothing is ever sent to Google. The key is stored only in local extension storage on the device, is not included in exported backups, and is removed when the user clears it or uses the delete-all option. When a key is saved, the extension also sends one short text-only test request (no image and no personal data) to Google's Gemini API to check that the key works. Google processes the request under its own terms and privacy policy, and the user's own Gemini account or quota applies.</p>
       <p>In every case, applicant profiles, passport details, and other form fields are never included in these requests. Users who disable or do not use the CAPTCHA helper never trigger any of these external requests.</p>
     </section>
 
     <section>
       <h2>Data sharing, sale, and tracking</h2>
-      <p>The developer does not collect, receive, sell, rent, or trade any user data. Aside from the optional CAPTCHA-image requests to <code>api.ocr.space</code> and, only if the user adds their own key, Google Gemini (both described above), user data is never transmitted to external servers. The extension contains no advertisements, telemetry, or third-party analytics trackers, and requires no account.</p>
+      <p>The developer does not collect, receive, sell, rent, or trade any user data. Aside from the CAPTCHA-image requests to <code>api.ocr.space</code> (Indian Visa Online (Bangladesh) portal only, when the local result is unclear) and, only if the user adds their own key, Google Gemini (both described above), user data is never transmitted to external servers. The extension contains no advertisements, telemetry, or third-party analytics trackers, and requires no account.</p>
     </section>
 
     <section>
       <h2>Backups, PDFs, and screenshots</h2>
-      <p>Users may export their profiles as a JSON backup file. Exported JSON backups are unencrypted and may contain sensitive personal details; users are responsible for keeping backup files secure. If the user enables saving PDFs or captures a full-page screenshot (via the extension controls or <code>Alt+Shift+S</code>), those files remain in local storage until deleted. Users can view, download, or delete saved items anytime in the extension's Files section.</p>
+      <p>Users may export selected data (applicant profiles, saved temporary application IDs, NOC organisations and custom papers, saved Bangladesh references, and preferences/theme) as a JSON backup file. Exported JSON backups are unencrypted and may contain sensitive personal details; users are responsible for keeping backup files secure. If the user enables saving PDFs, the extension can detect the application PDF that a supported portal itself produces and keep a copy locally. If the user enables saving PDFs or captures a full-page screenshot (via the extension controls or <code>Alt+Shift+S</code>), those files remain in local storage until deleted. Users can view, download, or delete saved items anytime in the extension's Files section.</p>
     </section>
 
     <section>
       <h2>User controls and data deletion</h2>
       <p>Users have full control over their local data and can edit or delete individual profiles and saved files at any time. Using the extension's delete-all option permanently removes all locally stored extension data. Uninstalling the extension or clearing Chrome extension storage also removes local data. Any exported backup files saved to disk must be deleted manually by the user.</p>
+    </section>
+
+    <section>
+      <h2>Links, support email, and clipboard</h2>
+      <p>Buttons for support, Facebook, Google AI Studio (to get a Gemini key), and Google Maps (hotel search) open that page in a new tab or open a pre-filled Gmail draft. The draft contains only the extension version and, for the "captcha limit over" message, the page path. Nothing is sent unless the user chooses to send the email. Copy buttons write to the clipboard only when the user clicks them.</p>
     </section>
 
     <section>
